@@ -1,24 +1,16 @@
-import { ChangeEvent, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Home from "./pages/Home";
+import Display from "./pages/Display";
 
 function App() {
-  const [form, setForm] = useState({});
-
-  function handleSubmit() {}
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    return setForm({ ...form, [e.target.name]: e.target.value });
-  }
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label> Name: </label>
-        <input type="text" name="name" onChange={handleChange} />
-        <label> Age: </label>
-        <input type="number" name="age" onChange={handleChange} />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/display" element={<Display />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
